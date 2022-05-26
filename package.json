@@ -7,21 +7,45 @@
   "unpkg": "dist/fin.js",
   "type": "commonjs",
   "scripts": {
+    "commit": "git-cz",
     "build": "env NODE_ENV=production node scripts/build.js",
     "dev:esm": "rollup -w -c scripts/config.js --environment TARGET:esModule",
     "dev:cjs": "rollup -w -c scripts/config.js --environment TARGET:commonJs",
     "dev": "npm run dev:esm",
     "lint": "eslint ./lib/*.js --no-eslintrc -c .eslintrc.js --ext .js,.jsx,.ts,.tsx,.mpx,.vue --cache --no-error-on-unmatched-pattern",
     "fix": "eslint ./lib --fix --no-eslintrc -c .eslintrc.js --ext .js,.jsx,.ts,.tsx,.mpx,.vue --cache --no-error-on-unmatched-pattern",
-    "format": "prettier --write  \"(lib|scripts)/**/*.js\""
+    "format": "prettier --write  \"(lib|scripts)/**/*.js\"",
+    "test": ""
   },
   "keywords": [
     "fin"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "npm run lint"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
   "author": "zhangfei13@baidu.com",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@rollup/plugin-strip": "^2.1.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^5.10.0",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
@@ -29,7 +53,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
-    "husky": "^8.0.1",
+    "husky": "^4.3.8",
+    "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
     "rollup": "^2.74.1",
     "rollup-plugin-clear": "^2.0.7"
