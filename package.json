@@ -1,0 +1,46 @@
+{
+  "name": "fin",
+  "version": "1.0.0",
+  "description": "函数库",
+  "main": "dist.fin.common.js",
+  "module": "dist/fin.es.js",
+  "unpkg": "dist/fin.js",
+  "type": "commonjs",
+  "scripts": {
+    "build": "env NODE_ENV=production node scripts/build.js",
+    "dev:esm": "rollup -w -c scripts/config.js --environment TARGET:esModule",
+    "dev:cjs": "rollup -w -c scripts/config.js --environment TARGET:commonJs",
+    "dev": "npm run dev:esm",
+    "lint": "eslint ./lib/*.js --no-eslintrc -c .eslintrc.js --ext .js,.jsx,.ts,.tsx,.mpx,.vue --cache --no-error-on-unmatched-pattern",
+    "fix": "eslint ./lib --fix --no-eslintrc -c .eslintrc.js --ext .js,.jsx,.ts,.tsx,.mpx,.vue --cache --no-error-on-unmatched-pattern",
+    "format": "prettier --write  \"(lib|scripts)/**/*.js\""
+  },
+  "keywords": [
+    "fin"
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test"
+    }
+  },
+  "author": "zhangfei13@baidu.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-strip": "^2.1.0",
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "husky": "^8.0.1",
+    "prettier": "^2.6.2",
+    "rollup": "^2.74.1",
+    "rollup-plugin-clear": "^2.0.7"
+  }
+}
