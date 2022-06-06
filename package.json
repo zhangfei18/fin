@@ -25,14 +25,15 @@
     "fin"
   ],
   "gitHooks": {
-    "pre-commit": "npx lint-staged",
+    "pre-commit": "lint-staged",
     "commit-msg": "node scripts/verify-commit-msg.js"
   },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "npm run lint"
-    ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "npx commitlint  --edit",
+      "pre-push": "npm run test '$1'"
+    }
   },
   "config": {
     "commitizen": {
