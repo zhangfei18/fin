@@ -24,12 +24,9 @@
   "keywords": [
     "fin"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "npx commitlint  --edit",
-      "pre-push": "npm run test '$1'"
-    }
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verify-commit-msg.js"
   },
   "lint-staged": {
     "lib/**/*.js": [
