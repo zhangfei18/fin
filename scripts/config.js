@@ -30,7 +30,7 @@ const builds = {
     entry: resolve('../lib/index.js'),
     dest: resolve('../dist/fin.js'),
     format: 'iife',
-    name: "fin",
+    name: 'fin',
     banner,
   },
 }
@@ -44,9 +44,7 @@ function getConfig(name) {
   const opts = builds[name]
   const config = {
     input: opts.entry,
-    plugins: [
-
-    ].concat(opts.plugins || []),
+    plugins: [].concat(opts.plugins || []),
     output: {
       file: opts.dest,
       format: opts.format,
