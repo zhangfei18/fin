@@ -29,7 +29,7 @@
     "commit-msg": "node scripts/verify-commit-msg.js"
   },
   "lint-staged": {
-    "lib/**/*.js": [
+    "*.js": [
       "prettier --write",
       "npm run lint"
     ]
