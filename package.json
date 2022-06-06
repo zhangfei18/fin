@@ -9,27 +9,30 @@
   "scripts": {
     "prepare": "husky install",
     "commit": "git-cz",
+    "prebuild": "rimraf dist",
     "build": "env NODE_ENV=production node scripts/build.js",
     "dev:esm": "rollup -w -c scripts/config.js --environment TARGET:esModule",
     "dev:cjs": "rollup -w -c scripts/config.js --environment TARGET:commonJs",
     "dev": "npm run dev:esm",
     "lint": "eslint ./lib/*.js --no-eslintrc -c .eslintrc.js --ext .js,.jsx,.ts,.tsx,.mpx,.vue --cache --no-error-on-unmatched-pattern",
-    "fix": "eslint ./lib --fix --no-eslintrc -c .eslintrc.js --ext .js,.jsx,.ts,.tsx,.mpx,.vue --cache --no-error-on-unmatched-pattern",
+    "fix": "eslint ./lib/*.js --fix --no-eslintrc -c .eslintrc.js --ext .js,.jsx,.ts,.tsx,.mpx,.vue --cache --no-error-on-unmatched-pattern",
     "format": "prettier --write  \"(lib|scripts)/**/*.js\"",
-    "test": ""
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:prod": "npm run lint && npm run test -- --coverage --no-cache"
   },
   "keywords": [
     "fin"
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "npx lint-staged",
       "commit-msg": "npx commitlint  --edit",
-      "pre-push": "npm run test"
+      "pre-push": "npm run test '$1'"
     }
   },
   "lint-staged": {
-    "*.js": [
+    "lib/**/*.js": [
       "prettier --write",
       "npm run lint"
     ]
@@ -42,9 +45,12 @@
   "author": "zhangfei13@baidu.com",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@rollup/plugin-strip": "^2.1.0",
+    "babel-jest": "^28.1.0",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^5.10.0",
@@ -55,8 +61,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
-    "husky": "^4.3.8",
-    "lint-staged": "^12.4.1",
+    "husky": "^8.0.1",
+    "jest": "^28.1.0",
+    "lint-staged": "^13.0.0",
     "prettier": "^2.6.2",
     "rollup": "^2.74.1",
     "rollup-plugin-clear": "^2.0.7"

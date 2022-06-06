@@ -5,3 +5,5 @@ scripts
 dist
 cz-config.js
 commitlint.config.js
+babel.config.js
+test/*

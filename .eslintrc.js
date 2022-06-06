@@ -22,4 +22,10 @@ module.exports = {
     'generator-star-spacing': 0,
     'jest/expect-expect': 0,
   },
+  globals: {
+    describe: 'readonly',
+    beforeAll: 'readonly',
+    test: 'readonly',
+    espect: 'readonly',
+  },
 }
