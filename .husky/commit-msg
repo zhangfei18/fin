@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
-echo $@
 # npx --no-install commitlint --edit "$1"
-GIT_PARAMS=$@ node scripts/verifyCommit.js --edit $@
+GIT_PARAMS=$@ node scripts/verifyCommit.js

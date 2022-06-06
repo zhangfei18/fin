@@ -1,63 +1,45 @@
 module.exports = {
-  allowBreakingChanges: ['feat', 'fix'],
-  allowCustomScopes: true,
-  scopes: [],
   types: [
-    {
-      name: '功能：新增功能，迭代项目需求 (feat)',
-      value: 'feat',
-    },
-    {
-      name: '修复：修复缺陷，修复上一版本存在问题 (fix)',
-      value: 'fix',
-    },
-    {
-      name: '文档：更新文档，仅改动文档不改动代码 (docs)',
-      value: 'docs',
-    },
-    {
-      name: '样式：变动格式，不影响代码逻辑 (style)',
-      value: 'style',
-    },
-    {
-      name: '重构：重构代码，非新增功能也非修改缺陷 (refactor)',
-      value: 'refactor',
-    },
-    {
-      name: '性能：优化性能，提高代码执行性能 (perf)',
-      value: 'perf',
-    },
-    {
-      name: '测试：新增测试，追加测试用例验证代码 (test)',
-      value: 'test',
-    },
-    {
-      name: '构建：更新构建，改动构建工具或外部依赖 (build)',
-      value: 'build',
-    },
-    {
-      name: '脚本：更新脚本，改动CI或执行脚本配置 (ci)',
-      value: 'ci',
-    },
-    {
-      name: '事务：变动事务，改动其他不影响代码的事务 (chore)',
-      value: 'chore',
-    },
-    {
-      name: '回滚：回滚版本，撤销某次代码提交 (revert)',
-      value: 'revert',
-    },
-    {
-      name: '合并：合并分支，合并分支代码到其他分支 (merge)',
-      value: 'merge',
-    },
-    {
-      name: '同步：同步分支，同步分支代码到其他分支 (sync)',
-      value: 'sync',
-    },
-    {
-      name: '改进：改进功能，升级当前功能模块 (impr)',
-      value: 'impr',
-    },
+    { value: '✨新增', name: '新增:    新的内容' },
+    { value: '🐛修复', name: '修复:    修复一个Bug' },
+    { value: '📝文档', name: '文档:    变更的只有文档' },
+    { value: '💄格式', name: '格式:    空格, 分号等格式修复' },
+    { value: '♻️重构', name: '重构:    代码重构，注意和特性、修复区分开' },
+    { value: '⚡️性能', name: '性能:    提升性能' },
+    { value: '✅测试', name: '测试:    添加一个测试' },
+    { value: '🔧工具', name: '工具:    开发工具变动(构建、脚手架工具等)' },
+    { value: '⏪回滚', name: '回滚:    代码回退' }
   ],
+  scopes: [
+    { name: 'leetcode' },
+    { name: 'javascript' },
+    { name: 'typescript' },
+    { name: 'Vue' },
+    { name: 'node' }
+  ],
+  // it needs to match the value for field type. Eg.: 'fix'
+  /*  scopeOverrides: {
+    fix: [
+      {name: 'merge'},
+      {name: 'style'},
+      {name: 'e2eTest'},
+      {name: 'unitTest'}
+    ]
+  },  */
+  // override the messages, defaults are as follows
+  messages: {
+    type: '选择一种你的提交类型:',
+    scope: '选择一个scope (可选):',
+    // used if allowCustomScopes is true
+    customScope: 'Denote the SCOPE of this change:',
+    subject: '短说明:\n',
+    body: '长说明，使用"|"换行(可选)：\n',
+    breaking: '非兼容性说明 (可选):\n',
+    footer: '关联关闭的issue，例如：#31, #34(可选):\n',
+    confirmCommit: '确定提交说明?(yes/no)'
+  },
+  allowCustomScopes: true,
+  allowBreakingChanges: ['特性', '修复'],
+  // limit subject length
+  subjectLimit: 100
 }

@@ -43,8 +43,6 @@
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
     "@rollup/plugin-strip": "^2.1.0",
     "babel-jest": "^28.1.0",
     "chalk": "^4.1.0",
