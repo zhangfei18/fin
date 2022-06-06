@@ -25,7 +25,7 @@
     "fin"
   ],
   "gitHooks": {
-    "pre-commit": "lint-staged",
+    "pre-commit": "npx lint-staged",
     "commit-msg": "node scripts/verify-commit-msg.js"
   },
   "lint-staged": {
