@@ -25,6 +25,9 @@
   "keywords": [
     "fin"
   ],
+  "gitHooks": {
+    "commit-msg": "node scripts/verifyCommit.js"
+  },
   "husky": {
     "hooks": {
       "pre-push": "npm run test '$1'"
